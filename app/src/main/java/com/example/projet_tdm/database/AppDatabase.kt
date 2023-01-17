@@ -9,7 +9,6 @@ import com.example.projet_tdm.database.arret.Arret
 import com.example.projet_tdm.database.arret.ArretDao
 
 @Database(entities = [Arret::class], version = 1)
-@TypeConverters(Converters::class)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun scheduleDao(): ArretDao
 

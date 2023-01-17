@@ -8,7 +8,7 @@ import java.util.*
 data class Arret (
     @ColumnInfo(name = "num_ar") val numAr: Int,
     @ColumnInfo(name = "chambre_ar") val chambreAR: String,
-    @ColumnInfo(name = "date_ar") val dateAr: Date,
+    @ColumnInfo(name = "date_ar") val dateAr: String,
     @ColumnInfo(name = "parties_ar") val partiesAr: String,
     @ColumnInfo(name = "principe_ar") val principeAr: String,
     @ColumnInfo(name = "decision_ar") val decisionAr: String,
@@ -18,5 +18,5 @@ data class Arret (
     @ColumnInfo(name = "annee_ref") val anneeRef: Int,
     @ColumnInfo(name = "num_ref") val numRef: Int,
     @ColumnInfo(name = "num_page_ref") val numPageRef: Int,
-    @ColumnInfo(name = "favorite") val favorite: Boolean,
+    @ColumnInfo(name = "favorite") var favorite: Boolean = false,
 )

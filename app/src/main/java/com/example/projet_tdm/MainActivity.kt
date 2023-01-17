@@ -7,8 +7,25 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.projet_tdm.database.arret.Arret
 import com.example.projet_tdm.databinding.ActivityMainBinding
 
+val arrets = mutableListOf<Arret>(
+    Arret(1, "الغرفة الإدارية", "21-11-1987", "", "", "", "", "", "", 0 ,0, 0),
+    Arret(1, "الغرفة المدنية", "25-02-1989", "", "", "", "", "", "", 0 ,0, 0),
+    Arret(1, "الغرفة التجارية و البحرية", "21-11-1987", "", "", "", "", "", "", 0 ,0, 0),
+    Arret(1, "مجلس الدولة", "25-02-1989", "", "", "", "", "", "", 0 ,0, 0),
+    Arret(1, "الغرفة الجنائية", "21-11-1987", "", "", "", "", "", "", 0 ,0, 0),
+    Arret(1, "غرفة الجنح و المخالفات", "25-02-1989", "", "", "", "", "", "", 0 ,0, 0),
+    Arret(1, "غرفة الأحوال الشخصية", "21-11-1987", "", "", "", "", "", "", 0 ,0, 0),
+    Arret(1, "الغرفة الإدارية", "21-11-1987", "", "", "", "", "", "", 0 ,0, 0),
+    Arret(1, "الغرفة المدنية", "25-02-1989", "", "", "", "", "", "", 0 ,0, 0),
+    Arret(1, "الغرفة التجارية و البحرية", "21-11-1987", "", "", "", "", "", "", 0 ,0, 0),
+    Arret(1, "مجلس الدولة", "25-02-1989", "", "", "", "", "", "", 0 ,0, 0),
+    Arret(1, "الغرفة الجنائية", "21-11-1987", "", "", "", "", "", "", 0 ,0, 0),
+    Arret(1, "غرفة الجنح و المخالفات", "25-02-1989", "", "", "", "", "", "", 0 ,0, 0),
+    Arret(1, "غرفة الأحوال الشخصية", "21-11-1987", "", "", "", "", "", "", 0 ,0, 0),
+)
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
