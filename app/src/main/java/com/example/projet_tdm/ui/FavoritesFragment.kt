@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projet_tdm.ArretAdapter
 import com.example.projet_tdm.RecyclerViewInterface
-import com.example.projet_tdm.arrets
+import com.example.projet_tdm.database.AppDatabase
+import com.example.projet_tdm.database.arret.Arret
 import com.example.projet_tdm.databinding.FragmentFavoritesBinding
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -27,26 +27,20 @@ class FavoritesFragment : Fragment(), RecyclerViewInterface {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val favoritesViewModel =
-            ViewModelProvider(this).get(FavoritesViewModel::class.java)
-
         _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
-        favoritesViewModel.text.observe(viewLifecycleOwner) {
-
-        }
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = ArretAdapter(arrets.filter { it.favorite }, this)
+        val appDb: AppDatabase = AppDatabase.getInstance(requireContext())!!
+
+        val adapter = ArretAdapter(appDb.arretDao().getFavorites(), this)
         mRecyclerView.adapter = adapter
         mRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-
     }
 
     override fun onDestroyView() {
@@ -54,7 +48,13 @@ class FavoritesFragment : Fragment(), RecyclerViewInterface {
         _binding = null
     }
 
-    override fun onItemClick(position: Int) {
-        TODO("Not yet implemented")
+    override fun onItemClick(arret: Arret) {
+        Toast.makeText(requireContext(), "Item clicked", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onFavClick(arret: Arret) {
+        val appDb: AppDatabase = AppDatabase.getInstance(requireContext())!!
+        appDb.arretDao().updateArret(arret)
+        Toast.makeText(requireContext(), "Fav button clicked", Toast.LENGTH_SHORT).show()
     }
 }
